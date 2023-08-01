@@ -3,7 +3,19 @@ import { getActiveTabURL } from "./utils.js";
 // adding a new bookmark row to the popup
 const addNewBookmark = () => {};
 
-const viewBookmarks = () => {};
+const viewBookmarks = (currentBookmarks=[]) => {
+  const bookmarksElement = document.getElementById("bookmarks");
+  bookmarksElement.innerHTML = "";
+
+  if(currentBookmarks.length > 0) {
+    for(let i = 0; i < currentBookmarks.length; i++) {
+      const bookmark = currentñbookmarks[i];
+      addnewBookmark(bookmarksElement, bookmark)
+    }
+  } else {
+    bookmarksElement.innerHTML = '<i class="row">No bookmarks to show</i>'
+  }
+};
 
 const onPlay = e => {};
 
@@ -21,7 +33,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   if(activeTab.url.includes("youtube.com/watch") && currentVideo) {
       chrome.storage.sync.get([currentVideo], (data) => {
         const currentVideoBookmarks = data[currentVideo] ? JSON.parse(data[currentVideo]) : [];
-        // viewBookmarks
+
+        viewBookmarks(currentVideoBookmarks);
       })
     } else {
       const container = document.getElementsByClassName("container")[0];
