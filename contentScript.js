@@ -56,6 +56,10 @@
         });
     }
 
+    let trail="&ytExt=ON";
+    if(!window.location.href.includes(trail)&&!window.location.href.includes("ab_channel")){
+        window.location.href+=trail;
+    }
     newVideoLoaded();
 })();
 
