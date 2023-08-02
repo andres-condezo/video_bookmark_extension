@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const currentVideo = urlParameters.get("v");
 
   if(activeTab.url.includes("youtube.com/watch") && currentVideo) {
+  console.log('💬 :popup.js:setBookmarkAttributes:47:', currentVideo);
       chrome.storage.sync.get([currentVideo], (data) => {
         const currentVideoBookmarks = data[currentVideo] ? JSON.parse(data[currentVideo]) : [];
 

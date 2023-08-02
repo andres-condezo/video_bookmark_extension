@@ -49,7 +49,7 @@
         console.log(newBookmark);
         currentVideoBookmarks = await fetchBookmarks();
 
-        currentVideoBookmarks
+        // currentVideoBookmarks
 
         chrome.storage.sync.set({
             [currentVideo]: JSON.stringify([...currentVideoBookmarks, newBookmark].sort((a, b) => a.time - b.time))
