@@ -1,4 +1,5 @@
 import { getActiveTabURL } from "./utils.js";
+import { PLAY, DELETE } from "./constants.js";
 
 // adding a new bookmark row to the popup
 const addNewBookmark = (bookmarksElement, bookmark) => {
@@ -42,7 +43,7 @@ const onPlay = async e => {
   const activeTab = await getActiveTabURL();
 
   chrome.tabs.sendMessage(activeTab.id, {
-    type: "PLAY",
+    type: PLAY,
     value: bookmarkTime
   })
 };
@@ -54,7 +55,7 @@ const onDelete = async e => {
 
   bookmarkElementToDelete.parentNode.removeChild(bookmarkElementToDelete);
   chrome.tabs.sendMessage(activeTab.id, {
-    type: "DELETE",
+    type: DELETE,
     value: bookmarkTime
   }, viewBookmarks);
 };
